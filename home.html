@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body class="bg-gray-100">
@@ -20,39 +22,47 @@
             <div class="flex-1">
                 <a class="btn btn-ghost text-3xl"><i class="fa-brands fa-github text-5xl"></i>GitHub Issues Tracker</a>
             </div>
-            <div class="join gap-3">
-                <div class="flex items-center justify-center">
-                    <label class="input validator join-item rounded-lg">
-                        <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
-                                stroke="currentColor">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <path d="m21 21-4.3-4.3"></path>
-                            </g>
-                        </svg>
-                        <input type="text" placeholder="Search issues..." required />
-                    </label>
-                </div>
-                <button class="btn btn-outline btn-primary join-item rounded-lg"><i class="fa-solid fa-plus"></i> New
-                    Issue</button>
+            <div class="flex-none">
+                <ul class="menu menu-horizontal gap-2 px-1">
+                    <div class="flex items-center justify-center">
+                        <label class="input validator join-item rounded-lg">
+                            <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                                    stroke="currentColor">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.3-4.3"></path>
+                                </g>
+                            </svg>
+                            <input type="text" placeholder="Search issues..." required />
+                        </label>
+                    </div>
+                    <details>
+                        <summary class="btn btn-outline btn-primary rounded-lg">New Issue<i
+                                class="fa-solid fa-plus"></i></summary>
+                        <ul class="bg-base-100 rounded-t-none p-2">
+                            <li><a>Home</a></li>
+                            <li><a>LogOut</a></li>
+                        </ul>
+                    </details>
+                    </li>
+                </ul>
             </div>
-
         </div>
     </header>
 
     <section class="pt-10">
         <div id="filter-container" class=" gap-4 p-5 mx-auto w-11/12 bg-white rounded-md shadow-sm">
 
-            <button id="tab-all" onclick="filterTap('all')" class="btn btn-outline btn-primary px-7">All<i
+            <button id="tab-all" onclick="filterTap('all')" class="lesson-btn btn btn-outline btn-primary px-7">All<i
                     class="fa-solid fa-desktop"></i>
             </button>
 
-            <button id="tab-Open" onclick="filterTap('Open')" class="btn btn-outline btn-primary px-5">Open<i
+            <button id="tab-Open" onclick="filterTap('Open')" class="lesson-btn btn btn-outline btn-primary px-5">Open<i
                     class="fa-solid fa-door-open"></i>
             </button>
 
-            <button id="tab-Closed" onclick="filterTap('Closed')" class="btn btn-outline btn-primary">Closed<i
-                    class="fa-solid fa-door-closed"></i>
+            <button id="tab-Closed" onclick="filterTap('Closed')"
+                class="lesson-btn btn btn-outline btn-primary">Closed<i class="fa-solid fa-door-closed"></i>
             </button>
 
         </div>
@@ -65,7 +75,8 @@
                     <img src="./assets/Aperture.png" alt="Aperture" class="w-[70%]">
                 </div>
                 <div class="">
-                    <h2 class="text-2xl font-medium"><span id="totalStatus" class="font-bold text-4xl text-primary">50</span> Issues</h2>
+                    <h2 class="text-2xl font-medium"><span id="totalStatus"
+                            class="font-bold text-4xl text-primary">50</span> Issues</h2>
                     <p class="font-medium">Track and manage your project issues</p>
                 </div>
             </div>
@@ -78,10 +89,18 @@
         </div>
     </section>
 
-    <section id="word-container" class="bg-gray-50 p-10 w-11/12 mx-auto rounded-lg mt-[-10px] mb-10 grid grid-cols-3 gap-4
-     ">
-    
+    <section id="word-container"
+        class="bg-gray-50 p-10 w-11/12 mx-auto rounded-lg mt-[-10px] mb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
     </section>
+
+    <dialog id="word_modal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box p-10">
+            <div id="details-container" class="">
+                
+            </div>
+        </div>
+    </dialog>
 
     <script src="script/filter.js"></script>
 </body>
