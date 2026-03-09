@@ -1,9 +1,20 @@
 const removeActive = () => {
     const active = document.querySelectorAll(".lesson-btn");
     active.forEach(btn => btn.classList.remove("active"));
-}
+};
+
+const manageSpinner =(status) => {
+    if (status == true) {
+        document.getElementById('spinner').classList.remove('hidden');
+        document.getElementById('word-container').classList.add('hidden');
+    } else {
+        document.getElementById('word-container').classList.remove('hidden');
+        document.getElementById('spinner').classList.add('hidden');
+    }
+};
 
 const filterTap = (status) => {
+    manageSpinner(true);
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues`;
     fetch(url)
         .then(res => res.json())
@@ -22,56 +33,25 @@ const filterTap = (status) => {
 };
 
 const handleDelete = async(id) => {
+    
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
     const res = await fetch(url);
     const data = await res.json();
     displayWordDetails(data.data);
 };
 
-// {
-//     "id": 2,
-//     "title": "Add dark mode support",
-//     "description": "Users are requesting a dark mode option. This would improve accessibility and user experience.",
-//     "status": "open",
-//     "labels": [
-//         "enhancement",
-//         "good first issue"
-//     ],
-//     "priority": "medium",
-//     "author": "sarah_dev",
-//     "assignee": "",
-//     "createdAt": "2024-01-14T14:20:00Z",
-//     "updatedAt": "2024-01-16T09:15:00Z"
-// }
-
-// {
-//     "id": 1,
-//     "title": "Fix navigation menu on mobile devices",
-//     "description": "The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.",
-//     "status": "open",
-//     "labels": [
-//         "bug",
-//         "help wanted"
-//     ],
-//     "priority": "high",
-//     "author": "john_doe",
-//     "assignee": "jane_smith",
-//     "createdAt": "2024-01-15T10:30:00Z",
-//     "updatedAt": "2024-01-15T10:30:00Z"
-// }
-
 const displayWordDetails = (word) => {
-    console.log(word);
+
     const detailsBox = document.getElementById("details-container");
     detailsBox.innerHTML = `
         <h2  class="font-bold text-3xl">${word.title}</h2>
                 <br>
-                <div class="flex gap-7">
+                <div class="flex gap-5">
                     <button class="${word.status === 'open' ? 'bg-green-500' : 'bg-purple-500'} btn text-white h-6 px-3 rounded-full shadow-lg">
                         ${word.status === 'open' ? 'Opened' : 'Closed'}
                     </button>
-                    <li class="text-gray-500">Opened by ${word.author}</li>
-                    <li class="text-gray-500">${word.createdAt}</li>
+                    <button class="text-gray-500">Opened by ${word.author}</button>
+                    <button class="text-gray-500">${word.createdAt}</button>
                 </div>
                 <br>
                 <div class="flex flex-nowrap gap-2 w-full overflow-x-auto">
@@ -111,7 +91,7 @@ const displayWordDetails = (word) => {
                 </form>
     `;
     document.getElementById("word_modal").showModal();
-}
+};
 
 const displayIssues = (words) => {
     const wordContainer = document.getElementById("word-container");
@@ -180,6 +160,21 @@ const displayIssues = (words) => {
         `;
         wordContainer.appendChild(card);
     });
+
+    manageSpinner(false);
 };
 
 filterTap('all');
+
+document.getElementById('btn-search').addEventListener('click', () => {
+    const input = document.getElementById('input-search');
+    const searchValue = input.value.trim().toLowerCase();
+
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=notifications`)
+    .then(res => res.json())
+    .then((data) => {
+        const allWords = data.data;
+        const filteredWords = allWords.filter(word => word.title.toLowerCase().includes(searchValue));
+        displayIssues(filteredWords);
+    });
+});

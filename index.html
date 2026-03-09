@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B-13 A-5</title>
+    <title>GitHub Issues Tracker</title>
+    <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
@@ -13,41 +14,53 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="min-h-screen max-w-md bg-base-200 mx-auto">
-    <div class="logo w-[100px] mx-auto pt-32">
-        <img src="assets/github-logo.png" alt="github-logo">
-    </div>
-    <div class="flex flex-col items-center justify-center">
-        <h1 class="text-2xl font-bold">GitHub Issues Tracker</h1>
-        <p>Sign in to manage your issues</p>
-    </div>
-    <div class="form pt-10">
-        <div class="card w-full max-w-sm shrink-0 mx-auto">
-            <div class="card-body">
-                <fieldset class="fieldset">
-                    <label class="label text-neutral font-semibold">Username</label>
-                    <input id="input-number" type="text" class="input w-full" value="admin" placeholder="Enter Username" />
-                    <div><a class="link link-hoverhover text-primary">Default: admin</a></div>
-                    <br>
-                    <label class="label text-neutral font-semibold">Password</label>
-                    <input id="input-pin" type="password" class="input w-full" value="admin123" placeholder="Enter Password" />
-                    <div><a class="link link-hover text-primary">Default: admin123</a></div>
-                    <button id="login-btn" class="btn btn-primary w-full mt-4">Sign In</button>
-                </fieldset>
+<body class="min-h-screen bg-base-300 mx-auto flex justify-center items-center p-4">
+    <div class="relative max-w-full w-full overflow-hidden rounded-lg p-[3px] ">
+        <div class="relative w-full max-w-sm mx-auto overflow-hidden rounded-lg p-[3px] bg-slate-800 shadow-2xl">
+            <div class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] 
+                bg-[conic-gradient(from_90deg_at_50%_50%,red_0%,yellow_25%,lime_50%,cyan_75%,red_100%)]">
             </div>
-        </div>
-    </div>
-    <div class="flex items-center my-4">
-        <div class="flex-grow border-t border-gray-300"></div>
-        <span class="px-3 text-gray-500 font-medium">OR</span>
-        <div class="flex-grow border-t border-gray-300"></div>
-    </div>
-    <div class="pb-8">
-        <div class="flex justify-center font-medium text-gray-500">Demo Credentials:</div>
-        <br>
-        <div class="w-11/12 mx-auto items-center bg-[#e0f0ff] py-5 text-center rounded-md">
-            <h1><span class="font-medium">Username:</span> admin</h1>
-            <h1><span class="font-medium">Password:</span> admin123</h1>
+
+            <div class="relative bg-base-200 rounded-lg max-w-md h-full w-full">
+                <div class="logo w-[100px] mx-auto pt-32">
+                    <img src="assets/github-logo.png" alt="github-logo">
+                </div>
+                <div class="flex flex-col items-center justify-center">
+                    <h1 class="text-2xl font-bold">GitHub Issues Tracker</h1>
+                    <p>Sign in to manage your issues</p>
+                </div>
+                <div class="form pt-10">
+                    <div class="card w-full max-w-sm shrink-0 mx-auto">
+                        <div class="card-body">
+                            <fieldset class="fieldset">
+                                <label class="label text-neutral font-semibold">Username</label>
+                                <input id="input-number" type="text" class="input w-full" value="admin"
+                                    placeholder="Enter Username" />
+                                <div><a class="link link-hoverhover text-primary">Default: admin</a></div>
+                                <br>
+                                <label class="label text-neutral font-semibold">Password</label>
+                                <input id="input-pin" type="password" class="input w-full" value="admin123"
+                                    placeholder="Enter Password" />
+                                <div><a class="link link-hover text-primary">Default: admin123</a></div>
+                                <button id="login-btn" class="btn btn-primary w-full mt-4">Sign In</button>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center my-4">
+                    <div class="flex-grow border-t border-gray-300"></div>
+                    <span class="px-3 text-gray-500 font-medium">OR</span>
+                    <div class="flex-grow border-t border-gray-300"></div>
+                </div>
+                <div class="pb-8">
+                    <div class="flex justify-center font-medium text-gray-500">Demo Credentials:</div>
+                    <br>
+                    <div class="w-11/12 mx-auto items-center bg-[#e0f0ff] py-5 text-center rounded-md">
+                        <h1><span class="font-medium">Username:</span> admin</h1>
+                        <h1><span class="font-medium">Password:</span> admin123</h1>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="script/login.js"></script>

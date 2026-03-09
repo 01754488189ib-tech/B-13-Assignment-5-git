@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B-13 A-5</title>
+    <title>GitHub Issues Tracker</title>
+    <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
@@ -24,24 +25,29 @@
             </div>
             <div class="flex-none">
                 <ul class="menu menu-horizontal gap-2 px-1">
-                    <div class="flex items-center justify-center">
-                        <label class="input validator join-item rounded-lg">
-                            <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <div class="join">
+                        <div>
+                            <label class="input validator join-item">
+                                <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
                                     stroke="currentColor">
                                     <circle cx="11" cy="11" r="8"></circle>
                                     <path d="m21 21-4.3-4.3"></path>
                                 </g>
                             </svg>
-                            <input type="text" placeholder="Search issues..." required />
-                        </label>
+                                <input id="input-search" type="text" placeholder="Search issues..." required />
+                            </label>
+                        </div>
+                        <button id="btn-search" class="btn btn-primary rounded-sm">search</button>
                     </div>
                     <details>
                         <summary class="btn btn-outline btn-primary rounded-lg">New Issue<i
                                 class="fa-solid fa-plus"></i></summary>
                         <ul class="bg-base-100 rounded-t-none p-2">
-                            <li><a>Home</a></li>
-                            <li><a>LogOut</a></li>
+                            <li class="text-primary font-bold border-2 border-primary rounded-full"><a><i
+                                        class="fa-solid fa-house-circle-exclamation"></i>Home</a></li>
+                            <li class="mt-2 text-primary font-bold border-2 border-primary rounded-full"><a href="index.html"><i
+                                        class="fa-solid fa-arrow-right-from-bracket"></i>LogOut</a></li>
                         </ul>
                     </details>
                     </li>
@@ -68,6 +74,7 @@
         </div>
     </section>
 
+
     <section class="pt-8">
         <div class="gap-10 p-5 mx-auto w-11/12 bg-white rounded-md shadow-sm justify-between relative">
             <div class="flex space-x-5">
@@ -89,6 +96,10 @@
         </div>
     </section>
 
+    <section id="spinner" class="flex justify-center items-center pt-40 hidden">
+        <span class="loading loading-spinner loading-xl"></span>
+    </section>
+
     <section id="word-container"
         class="bg-gray-50 p-10 w-11/12 mx-auto rounded-lg mt-[-10px] mb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
@@ -97,7 +108,7 @@
     <dialog id="word_modal" class="modal modal-bottom sm:modal-middle">
         <div class="modal-box p-10">
             <div id="details-container" class="">
-                
+
             </div>
         </div>
     </dialog>
